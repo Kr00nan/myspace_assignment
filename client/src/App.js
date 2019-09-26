@@ -1,11 +1,28 @@
 import React from 'react';
+import Home from './components/Home';
+import NoMatch from './components/NoMatch';
+import Navbar from './components/Navbar';
+import Login from './components/Login';
+import Register from './components/Register';
+import { Switch, Route } from "react-router-dom";
+import { Container } from "semantic-ui-react";
 
-function App() {
+const App = () => {
   return (
     <div>
-      <h1>Hello World</h1>
+      <>
+        <Navbar />
+        <Container>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/register' component={Register} />
+            <Route component={NoMatch} />
+          </Switch>
+        </Container>
+      </>
     </div>
   );
-}
+};
 
 export default App;
