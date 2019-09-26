@@ -9,4 +9,8 @@ class Api::PeopleController < ApplicationController
     current_user.liked_people << params[:id].to_i
     current_user.save
   end
+
+  def my_friends
+    render json: User.liked(current_user.liked_people)
+  end
 end
