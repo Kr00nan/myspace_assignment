@@ -38,6 +38,7 @@ export default class Login extends Component {
             required
             name='password'
             placeholder='Password'
+            type='password'
             value={password}
             onChange={this.handleChange}
           />
