@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Card, Divider, Image, Header } from 'semantic-ui-react';
+import { Card, Image, Header } from 'semantic-ui-react';
 
 class MyFriends extends Component {
   state = { people: [] };
@@ -15,16 +15,23 @@ class MyFriends extends Component {
     const { people } = this.state;
     return (
       <>
+        <br />
         <Header as='h2' textAlign='center'>My Friends</Header>
         <Card.Group itemsPerRow={4}>
           {people.map(person =>
             <Card key={person.id}>
               <Image src={person.avatar} />
               <Card.Content>
-                <Divider />
                 <Card.Header>
                   {person.name}
                 </Card.Header>
+              </Card.Content>
+              <Card.Content extra>
+                <Card.Meta>
+                  Location: {person.location}
+                  <br />
+                  Birthday: {person.birthday}
+                </Card.Meta>
               </Card.Content>
             </Card>
           )}

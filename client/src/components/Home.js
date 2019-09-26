@@ -30,7 +30,7 @@ class Home extends Component {
         <>
           <br />
           <Header as='h1' textAlign='center'>Suggested Friends</Header>
-          <Card.Group>
+          <Card.Group itemsPerRow={4}>
             <br />
             {this.state.people.map(
               person => (
@@ -40,11 +40,6 @@ class Home extends Component {
                     <Card.Header>
                       {person.name}
                     </Card.Header>
-                    <Card.Meta>
-                      Location: {person.location}
-                      <br />
-                      Birthday: {person.birthday}
-                    </Card.Meta>
                   </Card.Content>
                   <Card.Content extra>
                     <Button color='red' icon basic onClick={() => this.unFriend(person.id)}>
@@ -61,7 +56,7 @@ class Home extends Component {
         </>
       )
     } else {
-      return <Header textAlign='center'>Go find a friend!</Header>
+      return <Header textAlign='center'>Go find some friends!</Header>
     }
   }
 }
