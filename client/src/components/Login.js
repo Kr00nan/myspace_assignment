@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { AuthConsumer } from '../providers/AuthProvider';
 import { Button, Form, Segment, Header } from 'semantic-ui-react';
 
-export default class Login extends Component {
+class Login extends Component {
   state = { email: '', password: '' };
 
   handleSubmit = (e) => {
@@ -55,7 +55,7 @@ export default class ConnectedLogin extends Component {
   render() {
     return (
       <AuthConsumer>
-        {auth => <Login {...props} auth={auth} />}
+        {auth => <Login {...this.props} auth={auth} />}
       </AuthConsumer>
     );
   };

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { AuthConsumer } from '../providers/AuthProvider';
 import { Button, Form, Segment, Header } from 'semantic-ui-react';
 
-export default class Register extends Component {
+class Register extends Component {
   state = { email: '', password: '', passwordConfirmation: '' };
 
   handleSubmit = (e) => {

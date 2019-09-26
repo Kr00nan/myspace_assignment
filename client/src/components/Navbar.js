@@ -61,7 +61,7 @@ export class ConnectedNavbar extends Component {
   render() {
     return (
       <AuthConsumer>
-        {auth => <Navbar {...props} auth={auth} />}
+        {auth => <Navbar {...this.props} auth={auth} />}
       </AuthConsumer>
     )
   }
