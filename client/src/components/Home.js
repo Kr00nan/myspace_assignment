@@ -41,7 +41,7 @@ class Home extends Component {
       return (
         <div>
           <br />
-          <Header as='h1'>MySpace</Header>
+          <Header as='h1' textAlign='center'>MySpace</Header>
           <br />
           <Card key={person.id}>
             <Image src={person.avatar} />
@@ -49,11 +49,10 @@ class Home extends Component {
               <Card.Header>
                 {person.name}
               </Card.Header>
-              <Card.Description>
-                {person.location}
-              </Card.Description>
               <Card.Meta>
-                {person.birthday}
+                Location: {person.location}
+                <br />
+                Birthday: {person.birthday}
               </Card.Meta>
             </Card.Content>
             <Card.Content extra>
@@ -66,7 +65,7 @@ class Home extends Component {
             </Card.Content>
           </Card>
           <Link to='/my_friends'>
-            <Button color='blue'>Friends List</Button>
+            <Button color='blue'>Go to Friends List</Button>
           </Link>
         </div>
       )
