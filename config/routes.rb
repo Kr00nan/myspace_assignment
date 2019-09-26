@@ -4,6 +4,15 @@ Rails.application.routes.draw do
   namespace :api do
     resources :people, only: [:index, :update]
     get 'my_friends', to: 'people#my_friends'
+
+    resources :users do
+      resources :blogs
+    end
+
+    resources :blogs do
+      resources :comments
+    end
+
   end
   
 end
