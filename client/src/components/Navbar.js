@@ -4,20 +4,30 @@ import { Menu } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 
 class Navbar extends Component {
-  rightNavItems = () => {
+  authenticatedNavItems = () => {
     const { auth: { user, handleLogout }, location } = this.props;
 
     if (user) {
       return (
-        <Menu.Menu position='right'>
-          <Menu.Item
-            name='logout'
-            onClick={() => handleLogout(this.props.history)}
-          />
-        </Menu.Menu>
+        <>
+          <Link to='/my_friends'>
+            <Menu.Item
+              id='myfriends'
+              name='my friends'
+              active={this.props.location.pathname === '/my_friends'}
+            />
+          </Link>
+          <Menu.Menu position='right'>
+            <Menu.Item
+              name='logout'
+              onClick={() => handleLogout(this.props.history)}
+            />
+          </Menu.Menu>
+        </>
       )
     } else {
       return (
+
         <Menu.Menu position='right'>
           <Link to='/login'>
             <Menu.Item
@@ -50,7 +60,7 @@ class Navbar extends Component {
               active={this.props.location.pathname === '/'}
             />
           </Link>
-          {this.rightNavItems()}
+          {this.authenticatedNavItems()}
         </Menu>
       </div>
     )

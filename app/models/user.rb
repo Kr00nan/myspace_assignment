@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   def self.random_person(ids)
     ids = ids.empty? ? [0] : ids
-    Person.where('id NOT IN (?)', ids).order('RANDOM()')
+    Person.where('id NOT IN (?)', ids).order('RANDOM()').limit('6')
   end
 
   def self.liked(ids)

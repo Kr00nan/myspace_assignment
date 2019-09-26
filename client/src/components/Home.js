@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Header, Image, Card, Button, Icon } from 'semantic-ui-react';
 
 class Home extends Component {
@@ -10,17 +10,6 @@ class Home extends Component {
     axios.get('/api/people')
       .then(res => this.setState({ people: res.data }))
       .catch(err => console.log('hello from Home componentDidMount catch...'));
-  }
-
-  sample = () => {
-    const { people } = this.state;
-
-    if (people.length) {
-      const index = Math.floor(Math.random() * people.length);
-      return people[index];
-    } else {
-      return null;
-    }
   }
 
   unFriend = (id) => {
@@ -36,38 +25,40 @@ class Home extends Component {
   }
 
   render() {
-    const person = this.sample();
-    if (person) {
+    if (this.state.people.length > 0) {
       return (
-        <div>
+        <>
           <br />
-          <Header as='h1' textAlign='center'>MySpace</Header>
-          <br />
-          <Card key={person.id}>
-            <Image src={person.avatar} />
-            <Card.Content>
-              <Card.Header>
-                {person.name}
-              </Card.Header>
-              <Card.Meta>
-                Location: {person.location}
-                <br />
-                Birthday: {person.birthday}
-              </Card.Meta>
-            </Card.Content>
-            <Card.Content extra>
-              <Button color='red' icon basic onClick={() => this.unFriend(person.id)}>
-                <Icon name='thumbs down' />
-              </Button>
-              <Button color='green' icon basic onClick={() => this.Friend(person.id)}>
-                <Icon name='thumbs up' />
-              </Button>
-            </Card.Content>
-          </Card>
-          <Link to='/my_friends'>
-            <Button color='blue'>Go to Friends List</Button>
-          </Link>
-        </div>
+          <Header as='h1' textAlign='center'>Suggested Friends</Header>
+          <Card.Group>
+            <br />
+            {this.state.people.map(
+              person => (
+                <Card key={person.id}>
+                  <Image src={person.avatar} />
+                  <Card.Content>
+                    <Card.Header>
+                      {person.name}
+                    </Card.Header>
+                    <Card.Meta>
+                      Location: {person.location}
+                      <br />
+                      Birthday: {person.birthday}
+                    </Card.Meta>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <Button color='red' icon basic onClick={() => this.unFriend(person.id)}>
+                      <Icon name='thumbs down' />
+                    </Button>
+                    <Button color='green' icon basic onClick={() => this.Friend(person.id)}>
+                      <Icon name='thumbs up' />
+                    </Button>
+                  </Card.Content>
+                </Card>
+              )
+            )}
+          </Card.Group>
+        </>
       )
     } else {
       return <Header textAlign='center'>Go find a friend!</Header>
