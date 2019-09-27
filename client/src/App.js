@@ -21,9 +21,9 @@ const App = () => {
             <Switch>
               <ProtectedRoute exact path='/' component={Home} />
               <ProtectedRoute exact path='/my_friends' component={MyFriends} />
-              <ProtectedRoute exact path='/viewblog' component={ViewBlog} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/register' component={Register} />
+              <ProtectedRoute exact path='/users/:user_id/blogs/:id(' component={ViewBlog} />
               <Route component={NoMatch} />
             </Switch>
           </Container>
