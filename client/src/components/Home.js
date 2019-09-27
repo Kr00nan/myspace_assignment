@@ -30,7 +30,7 @@ class Home extends Component {
         <>
           <br />
           <Blogs />
-          <Header as='h1' textAlign='center'>Suggested Friends</Header>
+          <Header as='h1'>Suggested Friends</Header>
           <Card.Group itemsPerRow={4}>
             <br />
             {this.state.people.map(

@@ -29,12 +29,13 @@ const BlogForm = ({ addBlog, toggleForm }) => {
           {...title}
         />
         <Form.Input
-          label='Title'
-          placeholder='Title'
-          name='title'
+          label='Body'
+          placeholder='Body'
+          name='body'
           required
           {...body}
         />
+        <Form.Button type='submit'>Submit</Form.Button>
       </Form.Group>
     </Form>
   );

@@ -14,7 +14,7 @@ class Api::BlogsController < ApplicationController
   end
 
   def create
-    blog = current_user.blog.new(blog_params)
+    blog = current_user.blogs.new(blog_params)
     if blog.save
       render json: blog
     else

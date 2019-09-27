@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import BlogForm from './BlogForm';
-import { List, Header, Segment, Button } from "semantic-ui-react";
+import { List, Header, Segment, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([])
@@ -16,10 +17,12 @@ export default function Blogs() {
   const renderBlogs = () => {
     return blogs.map(blog => (
       <Segment key={blog.id}>
+        <Link to='/api/blog'>
         <List.Header as='h3'>{blog.title}</List.Header>
         <List.Description>
           {blog.body}
         </List.Description>
+        </Link>
       </Segment>
     ))
   }
@@ -28,11 +31,11 @@ export default function Blogs() {
 
   return (
     <div>
-      <Header as='h1'>My Blogs</Header>
+      <Header as='h1'>Blogs</Header>
       <br />
       {showForm && <BlogForm addBlog={addBlog} toggleForm={setShowform} />}
       <Button onClick={() => setShowform(!showForm)}>
-        {showForm ? 'Close Form' : 'Show Form'}
+        {showForm ? 'Close' : 'New Blog?'}
       </Button>
       <List>
         {renderBlogs()}
