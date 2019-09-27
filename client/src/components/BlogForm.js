@@ -1,16 +1,16 @@
 import React from 'react';
 import axios from 'axios';
 import { Form } from 'semantic-ui-react';
-import {useFormInput} from './hooks/useFormInput';
+import { useFormInput } from './hooks/useFormInput';
 
-const BlogForm = ({addBlog, toggleForm}) => {
+const BlogForm = ({ addBlog, toggleForm }) => {
   // using custom hooks...
   const title = useFormInput('');
   const body = useFormInput('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('/api/blogs', { title: title.value , body: body.value })
+    axios.post('/api/blogs', { title: title.value, body: body.value })
       .then(res => {
         addBlog(res.data);
         toggleForm();

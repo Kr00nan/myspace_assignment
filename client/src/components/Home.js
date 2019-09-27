@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Blogs from './Blogs';
 import axios from 'axios';
 import { Header, Image, Card, Button, Icon } from 'semantic-ui-react';
 
@@ -28,6 +29,7 @@ class Home extends Component {
       return (
         <>
           <br />
+          <Blogs />
           <Header as='h1' textAlign='center'>Suggested Friends</Header>
           <Card.Group itemsPerRow={4}>
             <br />
