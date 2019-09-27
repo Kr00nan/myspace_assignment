@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   serialize :liked_people, Array
 
-  has_many :blogs
+  has_many :blogs, dependent: :destroy
 
   def self.random_person(ids)
     ids = ids.empty? ? [0] : ids
